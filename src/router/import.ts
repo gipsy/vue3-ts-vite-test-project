@@ -24,6 +24,9 @@ const CartPage = () =>
 const ProductPage = () =>
   import(/* webpackChunkName: "users" */ "@/pages/product/index.vue");
 
+const UsersPage = () =>
+  import(/* webpackChunkName: "users" */ "@/pages/users/index.vue");
+
 export {
   DashboardLayout,
   DashboardPage,
@@ -34,4 +37,5 @@ export {
   CategoryPage,
   CartPage,
   ProductPage,
+  UsersPage,
 };
