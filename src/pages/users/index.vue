@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { useGetUsers } from "@/api/users/query";
-import UserItem from "@/components/user/UserItem.vue";
+import { useGetUsers }   from "@/api/users/query";
+import UserItem          from "@/components/user/UserItem.vue";
+import { useStoreUsers } from "@store/users";
 
-const { data } = useGetUsers();
+//const { data } = useGetUsers();
+const { fetchUsers, state } = useStoreUsers();
+
+watchEffect(() => {
+  fetchUsers();
+})
 </script>
 
 <template>
@@ -14,7 +20,7 @@ const { data } = useGetUsers();
     </article>
     <div class="tw-grid tw-grid-cols-4 tw-gap-4">
       <template
-        v-for="user in data?.users" :key="user.id"
+        v-for="user in state?.userList" :key="user.id"
       >
         <UserItem :user="user"/>
       </template>
